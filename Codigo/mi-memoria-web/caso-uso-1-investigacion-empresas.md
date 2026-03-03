@@ -1,5 +1,11 @@
 # Caso de Uso: Chrome Dev Tools MCP para Investigación de Empresas de Tecnología
 
+## Prompt Original
+
+> "Necesito encontrar clientes de alta calidad para un curso de inteligencia artificial, cómo aprovechar la inteligencia artificial para su negocio. Por favor, deme las direcciones de correo, las direcciones físicas y el teléfono de contacto en una tabla CSV. Personalmente, vivo en Cartagena de Indias y entonces necesito que encuentre información detallada para ello. Ponte a trabajar inmediatamente en la búsqueda y sea claro. Asegúrate de usar Chrome Dev Tools MCP para ejecutar cualquiera de estas tareas porque quiero ver cómo funciona."
+
+---
+
 ## Objetivo
 
 Investigar empresas de tecnología en Cartagena de Indias, Colombia, para identificar prospectos potenciales para un curso de inteligencia artificial.

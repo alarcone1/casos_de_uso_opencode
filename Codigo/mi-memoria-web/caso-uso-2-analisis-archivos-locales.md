@@ -1,5 +1,11 @@
 # Caso de Uso: Análisis de Archivos en el Sistema Local
 
+## Prompt Original
+
+> "Busca la carpeta de Descargas en mi dispositivo, analízala para encontrar los 5 archivos más antiguos que haya allí, así como los 5 archivos más pesados, y preséntamelos en un formato claro (NO LOS BORRES TODAVÍA), repito, NO BORRES NADA."
+
+---
+
 ## Objetivo
 
 Analizar la carpeta de Descargas (Downloads) del usuario para identificar los 5 archivos más antiguos y los 5 archivos más pesados, sin eliminar ningún archivo.

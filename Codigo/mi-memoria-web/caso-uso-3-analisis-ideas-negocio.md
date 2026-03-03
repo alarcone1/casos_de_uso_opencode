@@ -1,5 +1,11 @@
 # Caso de Uso 3: Análisis y Visualización de Ideas de Negocio con Mapa de Nodos
 
+## Prompt Original
+
+> "Analiza el repositorio de ideas en @Ideas de negocio.md organízalas en diferentes categorías y genera un mapa de nodos (estilo Obsidian) para visualizar las conexiones y clústeres entre conceptos. El resultado final debe ser una imagen PNG que sirva como hoja de ruta visual."
+
+---
+
 ## Objetivo
 
 Analizar el repositorio de 100 ideas de negocio, organizarlas en diferentes categorías y generar un mapa de nodos estilo Obsidian para visualizar las conexiones y clústeres entre conceptos. El resultado final es una imagen PNG que sirve como hoja de ruta visual.

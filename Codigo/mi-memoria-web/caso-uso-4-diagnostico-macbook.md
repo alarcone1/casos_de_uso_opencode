@@ -1,5 +1,11 @@
 # Caso de Uso 4: Diagnóstico y Optimización de Rendimiento de Macbook
 
+## Prompt Original
+
+> "Averigua por qué mi computadora ha estado funcionando más lenta de lo habitual. Revisa los promedios de carga, la presión de la memoria, el espacio en disco, los procesos bloqueados y la actividad de intercambio (swap), luego profundiza para encontrar qué está causando realmente los problemas. Puede calcular tamaños de caché, revisar el uso de las herramientas o apps, encontrar instantáneas que consumen espacio, etc. NO REALICES NINGÚN CAMBIO TODAVÍA. NO ELIMINES NINGÚN ARCHIVO TODAVÍA. Solo muestra una lista de las 5 razones más probables por las que mi Macbook está más lenta de lo habitual. Sé conciso."
+
+---
+
 ## Objetivo
 
 Diagnosticar por qué la computadora del usuario ha estado funcionando más lenta de lo habitual, identificando las causas raíz y proporcionando recomendaciones detalladas para optimizar el rendimiento sin realizar cambios aún.

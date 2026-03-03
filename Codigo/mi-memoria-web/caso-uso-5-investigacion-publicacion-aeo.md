@@ -1,5 +1,15 @@
 # Caso de Uso 5: Investigación y Publicación de Artículo sobre AEO
 
+## Prompt Original
+
+> "Utilicé la herramienta MCP para Chrome para navegar por diferentes fuentes comparando las herramientas de IA de revisión de código existentes para su proceso de CI/CD. Investigue cómo optimizar artículos para el tráfico de agentes de IA; consulte el <contexto> a continuación. 
+> 1. Realice una lluvia de ideas sobre 5 artículos diferentes relevantes al TEMA, basándose en las fuentes. 
+> 2. Elija la mejor idea. 
+> 3. Escriba el artículo usted mismo y guárdelo como un archivo .md. 
+> 4. Construya un sitio web sencillo de un solo archivo HTML en esta base de código, coloque el artículo allí, mejore el diseño para que se vea único y profesional, y ábralo usando la herramienta MCP en un navegador web."
+
+---
+
 ## Objetivo
 
 Utilizar Chrome DevTools MCP para investigar diferentes fuentes sobre Answer Engine Optimization (AEO), crear contenido optimizado para ser citado por motores de IA, y publicarlo en un sitio web profesional.
