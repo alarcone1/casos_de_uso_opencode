@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Ideas de Negocio IA</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #fff;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            font-size: 2.5em;
+            background: linear-gradient(90deg, #00d9ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        .header p {
+            color: #8892b0;
+            font-size: 1.1em;
+        }
+        .legend {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9em;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background: rgba(255,255,255,0.1);
+        }
+        .legend-icon {
+            font-size: 1.2em;
+        }
+        .mindmap-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .cluster {
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+        .cluster:hover {
+            transform: translateX(10px);
+            border-color: rgba(0,217,255,0.3);
+        }
+        .cluster-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .cluster-icon {
+            font-size: 2em;
+        }
+        .cluster-title {
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+        .cluster-count {
+            background: #00d9ff;
+            color: #000;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        .ideas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        .idea {
+            background: rgba(255,255,255,0.05);
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 0.85em;
+            border-left: 3px solid #00d9ff;
+        }
+        .idea.highlight {
+            border-left-color: #ff6b6b;
+            background: rgba(255,107,107,0.1);
+        }
+        .idea.gemelos {
+            border-left-color: #ffd93d;
+            background: rgba(255,217,61,0.1);
+        }
+        .idea.middleware {
+            border-left-color: #6bcb77;
+            background: rgba(107,203,119,0.1);
+        }
+        .idea.marketplace {
+            border-left-color: #c56cf0;
+            background: rgba(197,108,240,0.1);
+        }
+        .idea.vision {
+            border-left-color: #ff9f43;
+            background: rgba(255,159,67,0.1);
+        }
+        .evals-section {
+            background: linear-gradient(90deg, rgba(0,217,255,0.1), rgba(0,255,136,0.1));
+            border: 2px solid #00d9ff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .evals-title {
+            font-size: 1.5em;
+            color: #00d9ff;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .evals-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .evals-item {
+            background: rgba(0,0,0,0.3);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            border: 1px solid #00d9ff;
+        }
+        .connections {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        .connections h3 {
+            color: #00ff88;
+            margin-bottom: 15px;
+        }
+        .connection-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .connection-tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🧠 Mapa de Ideas de Negocio IA</h1>
+        <p>100 Ideas organizadas en 9 clusters temáticos</p>
+    </div>
+    
+    <div class="legend">
+        <div class="legend-item"><span class="legend-icon">💡</span> Evals-as-a-Service</div>
+        <div class="legend-item"><span class="legend-icon">🔮</span> Gemelos Digitales</div>
+        <div class="legend-item"><span class="legend-icon">🔗</span> Middleware</div>
+        <div class="legend-item"><span class="legend-icon">👁️</span> Visión Computacional</div>
+        <div class="legend-item"><span class="legend-icon">🔧</span> Mantenimiento Predictivo</div>
+        <div class="legend-item"><span class="legend-icon">🛒</span> Marketplace</div>
+    </div>
+
+    <div class="evals-section">
+        <div class="evals-title">✅ Evals-as-a-Service (Infraestructura de Evaluación)</div>
+        <div class="evals-grid">
+            <span class="evals-item">🏥 IA General #1</span>
+            <span class="evals-item">🌾 Agricultura #21</span>
+            <span class="evals-item">🍔 Alimentos #31</span>
+            <span class="evals-item">🛣️ Ing. Civil #41</span>
+            <span class="evals-item">⚙️ Ing. Mecánica #51</span>
+            <span class="evals-item">📦 Logística #61</span>
+            <span class="evals-item">🧠 Salud Mental #71</span>
+            <span class="evals-item">📚 Educación #91</span>
+        </div>
+    </div>
+
+    <div class="mindmap-container">
+        <!-- SALUD Y MEDICINA -->
+        <div class="cluster">
+            <div class="cluster-header">
+                <span class="cluster-icon">🏥</span>
+                <span class="cluster-title">Salud y Medicina</span>
+                <span class="cluster-count">10 ideas</span>
+            </div>
+            <div class="ideas-grid">
+                <div class="idea highlight">2. Auditoría Sesgo Algorítmico</div>
+                <div class="idea gemelos">3. Gemelos Ensayos Clínicos</div>
+                <div class="idea">4. Gestión Salud Mental</div>
+                <div class="idea">5. Inventarios Médicos</div>
+                <div class="idea">6. Longevidad</div>
+                <div class="idea">7. Facturación Médica</div>
+                <div class="idea middleware">8. Interoperabilidad Hospitalaria</div>
+                <div class="idea vision">9. Triage Telemedicina</div>
+                <div class="idea">10. Vigilancia Farmacológica</div>
+            </div>
+        </div>
+
+        <!-- ARQUITECTURA -->
+        <div class="cluster">
+            <div class="cluster-header">
+                <span class="cluster-icon">🏗️</span>
+                <span class="cluster-title">Arquitectura y Construcción</span>
+                <span class="cluster-count">10 ideas</span>
+            </div>
+            <div class="ideas-grid">
+                <div class="idea gemelos">11. Eficiencia Energética</div>
+                <div class="idea">12. Cumplimiento Normativo</div>
+                <div class="idea">13. Optimización Espacios</div>
+                <div class="idea">14. Sostenibilidad Materiales</div>
+                <div class="idea vision">15. Mantenimiento Fachadas</div>
+                <div class="idea">16. XR Supervisión Obra</div>
+                <div class="idea vision">17. Análisis Espacios Públicos</div>
+                <div class="idea">18. Presupuestos</div>
+                <div class="idea">19. Restauración Patrimonio</div>
+                <div class="idea marketplace">20. Marketplace Modular</div>
+            </div>
+        </div>
+
+        <!-- AGRICULTURA -->
+        <div class="cluster">
+            <div class="cluster-header">
+                <span class="cluster-icon">🌾</span>
+                <span class="cluster-title">Agricultura (AgriTech)</span>
+                <span class="cluster-count">10 ideas</span>
+            </div>
+            <div class="ideas-grid">
+                <div class="idea highlight">22. Gemelos Cultivos</div>
+                <div class="idea vision">23. Salud Suelo</div>
+                <div class="idea">24. Riego Inteligente</div>
+                <div class="idea middleware">25. Interoperabilidad Maquinaria</div>
+                <div class="idea vision">26. Detección Plagas</div>
+                <div class="idea">27. Predictivo Mercados</div>
+                <div class="idea">28. Trazabilidad Carbono</div>
+                <div class="idea marketplace">29. Uber Tractores</div>
+                <div class="idea">30. Vigilancia Satelital</div>
+            </div>
+        </div>
+
+        <!-- INDUSTRIA ALIMENTARIA -->
+        <div class="cluster">
+            <div class="cluster-header">
+                <span class="cluster-icon">🍔</span>
+                <span class="cluster-title">Industria Alimentaria (FoodTech)</span>
+                <span class="cluster-count">10 ideas</span>
+            </div>
+            <div class="ideas-grid">
+                <div class="idea gemelos">32. Gemelos Procesos</div>
+                <div class="idea vision">33. Auditoría Inocuidad</div>
+                <div class="idea">34. Shelf-life</div>
+                <div class="idea middleware">35. Trazabilidad Blockchain</div>
+                <div class="idea">36. Optimizador Recetas</div>
+                <div class="idea">37. Análisis Sensorial</div>
+                <div class="idea">38. Upcycling</div>
+                <div class="idea">39. Monitor Alérgenos</div>
+                <div class="idea marketplace">40. Marketplace Pequeños</div>
+            </div>
+        </div>
+
+        <!-- ING CIVIL -->
+        <div class="cluster">
+            <div class="cluster-header">
+                <span class="cluster-icon">🛣️</span>
+                <span class="cluster-title">Ingeniería Civil</span>
+                <span class="cluster-count">10 ideas</span>
+            </div>
+            <div class="ideas-grid">
+                <div class="idea gemelos">42. Gemelos Infraestructura</div>
+                <div class="idea vision">43. Monitoreo SHM</div>
+                <div class="idea vision">44. Seguridad Vial</div>
+                <div class="idea">45. Gestión Pavimentos</div>
+                <div class="idea middleware">46. Interoperabilidad BIM</div>
+                <div="idea">47. Movimiento Tierras</div>
+                <div class="idea">48. Sostenibilidad</div>
+                <div class="idea">49. Compliance Obra</div>
+                <div class="idea">50. Riesgos Geotécnicos</div>
+            </div>
+        </div>
+
+        <!-- ING MECÁNICA -->
+        <div class="cluster">
+            <div class="cluster-header">
+                <span class="cluster-icon">⚙️</span>
+                <span class="cluster-title">Ingeniería Mecánica</span>
+                <span class="cluster-count">10 ideas</span>
+            </div>
+            <div class="ideas-grid">
+                <div class="idea gemelos">52. Gemelos Maquinaria</div>
+                <div class="idea">53. Mantenimiento Vibracional</div>
+                <div class="idea">54. Eficiencia Termodinámica</div>
+                <div class="idea vision">55. Fatiga Materiales</div>
+                <div class="idea middleware">56. CAD/CAM/CAE</div>
+                <div class="idea">57. CFD Optimizado</div>
+                <div class="idea">58. Ciclo de Vida</div>
+                <div class="idea">59. Compliance ASME/ISO</div>
+                <div class="idea marketplace">60. Manufactura Aditiva</div>
+            </div>
+        </div>
+
+        <!-- ING INDUSTRIAL -->
+        <div class="cluster">
+            <div class="cluster-header">
+                <span class="cluster-icon">📦</span>
+                <span class="cluster-title">Ing. Industrial y Logística</span>
+                <span class="cluster-count">10 ideas</span>
+            </div>
+            <div class="ideas-grid">
+                <div class="idea gemelos">62. Gemelos Manufacturing</div>
+                <div class="idea">63. TPM Automatizado</div>
+                <div class="idea">64. Cadena Suministro</div>
+                <div class="idea vision">65. Ergonomía</div>
+                <div class="idea middleware">66. ERP/MES/WMS</div>
+                <div class="idea">67. Energía Industrial</div>
+                <div class="idea">68. Economía Circular</div>
+                <div class="idea">69. Control Estadístico</div>
+                <div class="idea marketplace">70. Logística Colaborativa</div>
+            </div>
+        </div>
+
+        <!-- SALUD MENTAL -->
+        <div class="cluster">
+            <div class="cluster-header">
+                <span class="cluster-icon">🧠</span>
+                <span class="cluster-title">Salud Mental y Psicología</span>
+                <span class="cluster-count">20 ideas</span>
+            </div>
+            <div class="ideas-grid">
+                <div class="idea gemelos">72. Gemelos Familiares</div>
+                <div class="idea">73. Biopsicosocial</div>
+                <div class="idea">74. Burnout Prevention</div>
+                <div class="idea">75. Sesgos Psicométricos</div>
+                <div class="idea middleware">76. Interoperabilidad Mental</div>
+                <div class="idea marketplace">77. Matchmaking</div>
+                <div class="idea">78. Análisis Sesiones</div>
+                <div class="idea">79. Programas Escolares</div>
+                <div class="idea marketplace">80. Soporte Emprendedores</div>
+            </div>
+        </div>
+
+        <!-- EDUCACIÓN -->
+        <div class="cluster">
+            <div class="cluster-header">
+                <span class="cluster-icon">📚</span>
+                <span class="cluster-title">Educación (EdTech)</span>
+                <span class="cluster-count">10 ideas</span>
+            </div>
+            <div class="ideas-grid">
+                <div class="idea gemelos">92. Gemelos Curriculares</div>
+                <div class="idea vision">93. Evaluación Competencias</div>
+                <div class="idea">94. Éxito Estudiantil</div>
+                <div class="idea">95. Integridad Académica</div>
+                <div class="idea middleware">96. Interoperabilidad LMS</div>
+                <div class="idea">97. Formación Docente</div>
+                <div class="idea">98. Clima Aula</div>
+                <div class="idea">99. REA Automáticos</div>
+                <div class="idea marketplace">100. Micro-Retos</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="connections">
+        <h3>🔗 Patrones de Solución Comunes</h3>
+        <div class="connection-tags">
+            <span class="connection-tag">🔮 Gemelos Digitales - 20+ ideas</span>
+            <span class="connection-tag">🔗 Middleware/Interoperabilidad - 10+ ideas</span>
+            <span class="connection-tag">👁️ Visión Computacional - 8 ideas</span>
+            <span class="connection-tag">🔧 Mantenimiento Predictivo - 5 ideas</span>
+            <span class="connection-tag">🛒 Marketplace - 8 ideas</span>
+        </div>
+    </div>
+</body>
+</html>
